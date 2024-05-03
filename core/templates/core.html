@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geleceğiniz Net</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css">
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="header-container">
+                <ul class="header-list">
+                    <li><img src="{% static 'geleceginiznet_logo.png' %}" alt="Geleceğiniz Net Logo" width="80" height="80"></li>
+                    <li><a href="#">Bölüm & Üniversite Ara</a></li>
+                    <li><a href="#">Puan Hesaplama</a></li>
+                    <li><a href="#">Forum</a></li>
+                </ul>
+                <ul class="auth-buttons">
+                    <li><a href="{% url 'login' %}">Giriş Yap</a></li>
+                    <li><a href="{% url 'signup' %}">Kayıt Ol</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero">
+                <h2>Hedefimiz</h2>
+                <p>
+                    "Geleceğiniz Net" projesi, öğrencilere üniversite bölümlerini 
+                    tanıtmayı amaçlayan bir platformdur. Proje, öğrencilere 
+                    üniversiteler ve bölümler hakkında kapsamlı bilgi sunarak, 
+                    onların gelecekteki eğitim ve kariyer seçimlerini daha net bir 
+                    şekilde belirlemelerine yardımcı olmayı hedeflemektedir.
+                </p>
+            </section>
+
+            <section class="features">
+                <h3>Platformda Neler Yapabilirsiniz?</h3>
+                <ul>
+                    <li>Kolayca üniversiteleri ve bölümleri arayarak, bölüm 
+                        hakkında detaylı bilgi edinebilirsiniz.</li>
+                    <li>Puanınızı kullanarak hangi bölümlere girebileceğinizi 
+                        hesaplayabilirsiniz.</li>
+                    <li>Diğer öğrencilerle forumda fikir alışverişinde 
+                        bulunabilirsiniz.</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Geleceğiniz Net</p>
+        </div>
+    </footer>
+</body>
+</html>

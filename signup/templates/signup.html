@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geleceginiz Net</title>
+</head>
+<body>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .signup-content {
+            display: flex;
+            align-items: center;
+            max-width: 800px;
+            border-radius: 20px; /* Yumuşak kenarlı dikdörtgen */
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Yumuşak gölge efekti */
+        }
+
+        .signup-form {
+            flex: 1;
+            padding: 40px;
+            background-color: #f8f9fa;
+        }
+
+        .signup-image {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+    {% load static %}
+
+    <div class="main">
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Kayıt Ol</h2>
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="id_name">İsim:</label>
+                                {{ form.name }}
+                            </div>
+                            <div class="form-group">
+                                <label for="id_surname">Soyisim:</label>
+                                {{ form.surname }}
+                            </div>
+                            <div class="form-group">
+                                <label for="id_mail">E-posta:</label>
+                                {{ form.mail }}
+                            </div>
+                            <div class="form-group">
+                                <label for="id_username">Kullanıcı Adı:</label>
+                                {{ form.username }}
+                            </div>
+                            <div class="form-group">
+                                <label for="id_password">Şifre:</label>
+                                {{ form.password }}
+                            </div>
+                            <div class="form-group">
+                                <label for="id_profile_picture">Profil Fotoğrafı:</label>
+                                <input type="file" name="profile_picture" id="id_profile_picture">
+                            </div>
+                            <button type="submit">Kayıt Ol</button>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <img src="{% static 'images/signup-image.png' %}" alt="Signup Image" width="400" height="400">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

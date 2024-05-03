@@ -1,0 +1,106 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f0f0f0;
+    padding: 20px 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Öğeleri yatay olarak dağıtır */
+    align-items: center; /* Dikey olarak hizalar */
+}
+
+.auth-buttons {
+    display: flex; /* Giriş ve kayıt ol butonlarının bir flexbox içinde olmasını sağlar */
+}
+
+.auth-buttons a {
+    margin-left: 10px; /* Butonlar arasında boşluk bırakmak için */
+}
+
+.header-list {
+    display: flex;
+    align-items: center;
+    /* Diğer öğeler arasında boşluk bırakmak için justify-content: space-between kullanın */
+    padding: 0; /* Padding'i sıfırlar */
+}
+
+
+
+nav li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+}
+
+.hero {
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.hero h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.features {
+    margin-bottom: 40px;
+}
+
+.features h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.features ul {
+    list-style: disc;
+    margin-left: 20px;
+}
+
+.features li {
+    margin-bottom: 10px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}

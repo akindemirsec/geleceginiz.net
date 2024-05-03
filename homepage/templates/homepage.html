@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="main">
+                {% if user %}
+                <div class="user-info">
+                    <p>Merhaba, {{ user.username }}</p>
+                    <img src="{{ user.profile_picture.url }}" alt="Profil Fotoğrafı">
+                </div>
+                {% endif %}
+            </div>
+        </section>
+    </div>
+</body>
+</html>

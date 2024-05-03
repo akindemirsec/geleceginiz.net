@@ -1,0 +1,40 @@
+/* Genel stil */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.home-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.user-info {
+    text-align: center;
+}
+
+.user-info h2 {
+    margin-bottom: 20px;
+}
+
+.user-info img {
+    max-width: 200px;
+    border-radius: 50%;
+    margin-top: 20px;
+}
