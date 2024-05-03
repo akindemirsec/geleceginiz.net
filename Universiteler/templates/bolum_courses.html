@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ bolum.bolum_name }} Dersleri</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-logo">
+            <img src="{% static 'geleceginiznet_logo.png' %}" alt="Logo">
+        </div>
+        <div class="navbar-actions">
+            {% if user %}
+                <p>Merhaba, {{ user.username }}</p>
+                <img src="{{ user.profile_picture.url }}" alt="Profil Fotoğrafı">
+                <a href="/" class="logout-button">Çıkış Yap</a>
+            {% endif %}
+        </div>
+    </header>
+
+    <h1>{{ bolum.bolum_name }} Dersleri</h1>
+    <ul>
+        {% for course in courses %}
+        <li><a href="{% url 'course_detail' course_id=course.course_id %}">{{ course.name }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Geleceğiniz Net</p>
+        </div>
+    </footer>
+</body>
+</html>
+ 

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ course.name }} Detayları</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>{{ course.name }} Detayları</h1>
+    <p>{{ course.description }}</p>
+    {% if course.video_url %}
+        <iframe width="560" height="315" src="{{ course.video_url }}" frameborder="0" allowfullscreen></iframe>
+    {% else %}
+        <p>Ders Videosu Henüz Mevcut Değil</p>
+    {% endif %}
+</body>
+</html>
