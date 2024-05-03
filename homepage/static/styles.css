@@ -1,40 +1,83 @@
-/* Genel stil */
-body, html {
-    height: 100%;
-    margin: 0;
+/* styles.css */
+
+/* Genel stiller */
+body {
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-.main {
+/* Navbar */
+.navbar {
+    background-color: #333;
+    color: #fff;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    height: 100vh;
+    padding: 10px 20px;
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 20px;
+.navbar-logo img {
+    width: 100px;
 }
 
-.home-content {
+.navbar-actions {
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 100%;
 }
 
-.user-info {
-    text-align: center;
+.navbar-actions p {
+    margin: 0 10px;
 }
 
-.user-info h2 {
-    margin-bottom: 20px;
+.logout-button {
+    background-color: #fff;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+/* Ana içerik */
+.main-content {
+    display: flex;
+    margin-top: 20px;
+}
+
+.sidebar {
+    flex: 1;
+    padding: 20px;
+    background-color: #f0f0f0;
 }
 
 .user-info img {
-    max-width: 200px;
+    width: 100px;
     border-radius: 50%;
+}
+
+.options {
     margin-top: 20px;
+}
+
+.option {
+    margin-bottom: 10px;
+}
+
+.option a {
+    display: block;
+    padding: 10px;
+    background-color: #ddd;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.option a:hover {
+    background-color: #ccc;
+}
+
+.content {
+    flex: 3;
+    padding: 20px;
+    background-color: #fff;
 }

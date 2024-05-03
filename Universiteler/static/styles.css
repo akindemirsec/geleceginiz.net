@@ -1,0 +1,38 @@
+/* styles.css */
+
+/* Üniversite bloğu */
+.university-block {
+    border: 1px solid #ddd; /* Sınır çizgisi */
+    border-radius: 10px; /* Yumuşak kenarlı diktörtgen */
+    padding: 20px; /* İç içe alan */
+    margin-bottom: 20px; /* Altta boşluk bırak */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+    background-color: #a7a3a3; /* Arkaplan rengi */
+}
+
+/* Üniversite logosu */
+.university-logo {
+    width: 100px; /* Logo genişliği */
+    height: 100px; /* Logo yüksekliği */
+    margin-right: 20px; /* Sağ boşluk */
+    border-radius: 50%; /* Yuvarlatılmış kenarlar */
+    overflow: hidden; /* Taşan içerikleri gizle */
+}
+
+/* Üniversite bilgileri */
+.university-info {
+    flex: 1; /* Esnek genişlik */
+}
+
+/* Üniversite adı */
+.university-name {
+    font-size: 18px; /* Yazı boyutu */
+    font-weight: bold; /* Kalın font */
+    margin: 0; /* Kenar boşluğu */
+}
+
+/* Üniversite şehri */
+.university-city {
+    font-size: 16px; /* Yazı boyutu */
+    margin: 0; /* Kenar boşluğu */
+}
