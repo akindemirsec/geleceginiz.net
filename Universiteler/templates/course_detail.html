@@ -1,19 +1,143 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ course.name }} Detayları</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <title>{{ fakulte.fakulte_name }} Dersleri</title>
+    <style>
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* Navbar'ın diğer içeriklerin üzerinde olmasını sağlar */
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .navbar-logo img {
+            width: 100px;
+        }
+
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-actions p {
+            margin: 0 10px;
+        }
+
+        .logout-button {
+            background-color: #fff;
+            color: #333;
+            padding: 8px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        /* Ana içerik */
+        .main-content {
+            display: flex;
+            margin-top: 70px; /* Navbar'ın yüksekliği kadar boşluk bırak */
+        }
+
+        .sidebar {
+            flex: 1;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .options {
+            margin-top: 20px;
+        }
+
+        .option {
+            margin-bottom: 10px;
+        }
+
+        .option a {
+            display: block;
+            padding: 10px;
+            background-color: #ddd;
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .option a:hover {
+            background-color: #ccc;
+        }
+
+        .content {
+            flex: 3;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            z-index: 1000; /* Footer'ın diğer içeriklerin üzerinde olmasını sağlar */
+        }
+
+        /* H1 etiketine uygulanan stil */
+        h1 {
+            margin-top: 20px; /* 20px'lik bir boşluk ekler */
+        }
+    </style>
 </head>
 <body>
+    <header class="navbar">
+        <div class="navbar-logo">
+            <a href="/homepage">
+                <!-- Logo -->
+                <img src="{% static 'geleceginiznet_logo.png' %}" alt="Logo">
+            </a>
+        </div>
+        <div class="navbar-actions">
+            {% if user %}
+                <p>Merhaba, {{ user.username }}</p>
+                <img src="{{ user.profile_picture.url }}" alt="Profil Fotoğrafı">
+                <a href="/" class="logout-button">Çıkış Yap</a>
+            {% endif %}
+        </div>
+    </header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
     <h1>{{ course.name }} Detayları</h1>
     <p>{{ course.description }}</p>
-    {% if course.video_url %}
-        <iframe width="560" height="315" src="{{ course.video_url }}" frameborder="0" allowfullscreen></iframe>
+    {% if course.video %}
+        <video width="600" height="480" controls>
+            <source src="{{ course.video.url }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     {% else %}
         <p>Ders Videosu Henüz Mevcut Değil</p>
     {% endif %}
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Geleceğiniz Net</p>
+        </div>
+    </footer>
 </body>
 </html>

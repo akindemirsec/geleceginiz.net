@@ -141,8 +141,10 @@
 <body>
     <header class="navbar">
         <div class="navbar-logo">
-            <!-- Buraya logo eklenecek -->
-            <img src="{% static 'geleceginiznet_logo.png' %}" alt="Logo">
+            <a href="/homepage">
+                <!-- Logo -->
+                <img src="{% static 'geleceginiznet_logo.png' %}" alt="Logo">
+            </a>
         </div>
         <div class="navbar-actions">
             {% if user %}

@@ -97,8 +97,10 @@
 <body>
     <header class="navbar">
         <div class="navbar-logo">
-            <!-- Buraya logo eklenecek -->
-            <img src="{% static 'geleceginiznet_logo.png' %}" alt="Logo">
+            <a href="/homepage">
+                <!-- Logo -->
+                <img src="{% static 'geleceginiznet_logo.png' %}" alt="Logo">
+            </a>
         </div>
         <div class="navbar-actions">
             {% if user %}
@@ -109,13 +111,19 @@
         </div>
     </header>
 
-    <h1>{{ fakulte.fakulte_name }} Dersleri</h1>
-    <br> <!-- Boşluk -->
-    <br>
-    <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+    <h1>{{ fakulte.fakulte_name }} Bölümleri</h1>
+
     <ul>
-        {% for course in courses %}
-        <li><a href="{% url 'course_detail' course_id=course.pk %}">{{ course.name }}</a></li>
+        {% for bolum in bolumler %}
+        <li><a href="{% url 'bolum_courses' bolum.bolum_id %}">{{ bolum.bolum_name }}</a></li>
         {% endfor %}
     </ul>
 

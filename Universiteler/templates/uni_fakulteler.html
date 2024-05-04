@@ -1,181 +1,135 @@
-<!-- uni_fakulteler.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fakülteler</title>
+    <title>{{ fakulte.fakulte_name }} Dersleri</title>
+    <style>
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* Navbar'ın diğer içeriklerin üzerinde olmasını sağlar */
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .navbar-logo img {
+            width: 100px;
+        }
+
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-actions p {
+            margin: 0 10px;
+        }
+
+        .logout-button {
+            background-color: #fff;
+            color: #333;
+            padding: 8px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        /* Ana içerik */
+        .main-content {
+            display: flex;
+            margin-top: 70px; /* Navbar'ın yüksekliği kadar boşluk bırak */
+        }
+
+        .sidebar {
+            flex: 1;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .options {
+            margin-top: 20px;
+        }
+
+        .option {
+            margin-bottom: 10px;
+        }
+
+        .option a {
+            display: block;
+            padding: 10px;
+            background-color: #ddd;
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .option a:hover {
+            background-color: #ccc;
+        }
+
+        .content {
+            flex: 3;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            z-index: 1000; /* Footer'ın diğer içeriklerin üzerinde olmasını sağlar */
+        }
+    </style>
 </head>
+<body>
+    <header class="navbar">
+        <div class="navbar-logo">
+            <a href="/homepage">
+                <!-- Logo -->
+                <img src="{% static 'geleceginiznet_logo.png' %}" alt="Logo">
+            </a>
+        </div>
+        <div class="navbar-actions">
+            {% if user %}
+                <p>Merhaba, {{ user.username }}</p>
+                <img src="{{ user.profile_picture.url }}" alt="Profil Fotoğrafı">
+                <a href="/" class="logout-button">Çıkış Yap</a>
+            {% endif %}
+        </div>
+    </header>
 
-<style>
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000; /* Navbar'ın diğer içeriklerin üzerinde olmasını sağlar */
-    background-color: #333;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-}
-.navbar-logo img {
-    width: 100px;
-}
-
-.navbar-actions {
-    display: flex;
-    align-items: center;
-}
-
-.navbar-actions p {
-    margin: 0 10px;
-}
-
-.logout-button {
-    background-color: #fff;
-    color: #333;
-    padding: 8px 12px;
-    border-radius: 5px;
-    text-decoration: none;
-}
-
-/* Ana içerik */
-.main-content {
-    display: flex;
-    margin-top: 20px;
-}
-
-.sidebar {
-    flex: 1;
-    padding: 20px;
-    background-color: #f0f0f0;
-}
-
-.options {
-    margin-top: 20px;
-}
-
-.option {
-    margin-bottom: 10px;
-}
-
-.option a {
-    display: block;
-    padding: 10px;
-    background-color: #ddd;
-    color: #333;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.option a:hover {
-    background-color: #ccc;
-}
-
-.content {
-    flex: 3;
-    padding: 20px;
-    background-color: #fff;
-}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
-.footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    z-index: 1000; /* Footer'ın diğer içeriklerin üzerinde olmasını sağlar */
-}
+    <h1>{{ universite.uni_name }} Fakülteleri</h1>
 
-/* Üniversite bloğu */
-.university-container {
-    display: flex; /* Blokları yatay olarak yerleştir */
-    flex-wrap: wrap; /* Blokları alt satıra geçir */
-    gap: 10px; /* Bloklar arası boşluk */
-    justify-content: space-between; /* Blokları eşit aralıklarla yerleştir */
-    padding: 20px; /* İçerik etrafında boşluk */
-}
-
-.university-block {
-    border: 1px solid #ddd; /* Sınır çizgisi */
-    border-radius: 10px; /* Yumuşak kenarlı diktörtgen */
-    padding: 20px; /* İç içe alan */
-    width: calc(25% - 20px); /* Yatayda 4 blok için genişlik hesaplama */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge */
-    background-color: #e2dddd; /* Arkaplan rengi */
-}
-
-/* Üniversite logosu */
-.university-logo {
-    width: 100px; /* Logo genişliği */
-    height: 100px; /* Logo yüksekliği */
-    margin-right: 20px; /* Sağ boşluk */
-    border-radius: 50%; /* Yuvarlatılmış kenarlar */
-    overflow: hidden; /* Taşan içerikleri gizle */
-}
-
-/* Üniversite bilgileri */
-.university-info {
-    flex: 1; /* Esnek genişlik */
-}
-
-.faculty-container {
-    margin-top: 70px; /* Navbar'ın yüksekliği kadar boşluk bırak */
-    /* Diğer stiller */
-}
-
-/* Üniversite adı */
-.university-name {
-    font-size: 18px; /* Yazı boyutu */
-    font-weight: bold; /* Kalın font */
-    margin: 0; /* Kenar boşluğu */
-}
-
-/* Üniversite şehri */
-.university-city {
-    font-size: 16px; /* Yazı boyutu */
-    margin: 0; /* Kenar boşluğu */
-}
-</style>
-<header class="navbar">
-    <div class="navbar-logo">
-        <!-- Buraya logo eklenecek -->
-        <img src="{% static 'geleceginiznet_logo.png' %}" alt="Logo">
-    </div>
-    <div class="navbar-actions">
-        {% if user %}
-            <p>Merhaba, {{ user.username }}</p>
-            <img src="{{ user.profile_picture.url }}" alt="Profil Fotoğrafı">
-            <a href="/" class="logout-button">Çıkış Yap</a>
-        {% endif %}
-    </div>
-</header>
-
-<!-- Fakülte içeriği -->
-<h1>{{ universite.uni_name }} Fakülteleri</h1>
-<div class="faculty-container">
-    {% for fakulte in fakulteler %}
-    <div class="faculty-block">
-        <a href="{% url 'fakulte_courses' fakulte.fakulte_id %}">
-            <div class="faculty-info">
-                <p class="faculty-name">{{ fakulte.fakulte_name }}</p>
-            </div>
-        </a>
-    </div>
-    {% endfor %}
-</div>
-
-<footer class="footer">
-    <div class="container">
-        <p>&copy; 2024 Geleceğiniz Net</p>
-    </div>
-</footer>
-
+    <ul>
+        {% for fakulte in fakulteler %}
+        <li><a href="{% url 'fakulte_courses' fakulte.fakulte_id %}">{{ fakulte.fakulte_name }}</a></li>
+        {% endfor %}
+    </ul>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Geleceğiniz Net</p>
+        </div>
+    </footer>
+</body>
+</html>

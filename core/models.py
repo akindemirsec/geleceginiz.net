@@ -35,7 +35,7 @@ class Gn_Fakulte(models.Model):
     fakulte_uni = models.ForeignKey(Gn_universite, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.fakulte_name
+        return f"{self.fakulte_uni.uni_name} - {self.fakulte_name}"
 
 class Gn_Bolum(models.Model):
     bolum_id = models.AutoField(primary_key=True)
@@ -43,7 +43,7 @@ class Gn_Bolum(models.Model):
     bolum_fakulte = models.ForeignKey(Gn_Fakulte, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.bolum_name} - {self.bolum_fakulte.fakulte_uni.uni_name}"
+        return f"{self.bolum_fakulte.fakulte_uni.uni_name} - {self.bolum_fakulte.fakulte_name} - {self.bolum_name}"
 
 
 class Course(models.Model):
@@ -51,7 +51,7 @@ class Course(models.Model):
     name = models.CharField(max_length=100)
     bolum = models.ForeignKey(Gn_Bolum, on_delete=models.CASCADE)
     description = models.TextField()
-    video_url = models.URLField(blank=True, null=True)
+    video = models.FileField(upload_to='videos/', blank=True, null=True)  # Yeni alan
 
     def __str__(self):
         return self.name

@@ -1,0 +1,15 @@
+<nav>
+    <header class="navbar">
+        <div class="navbar-logo">
+            <!-- Buraya logo eklenecek -->
+            <img src="{% static 'geleceginiznet_logo.png' %}" alt="Logo">
+        </div>
+        <div class="navbar-actions">
+            {% if user %}
+                <p>Merhaba, {{ user.username }}</p>
+                <img src="{{ user.profile_picture.url }}" alt="Profil Fotoğrafı">
+                <a href="/" class="logout-button">Çıkış Yap</a>
+            {% endif %}
+        </div>
+    </header>
+</nav>
